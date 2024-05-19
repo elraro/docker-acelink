@@ -11,6 +11,7 @@ services:
       - TZ=$TZ
       - PUID=1000
       - PGID=1000
+      - PORT=6878
     ports:
       - "6878:6878" # You can change this to match above or leave above to default and just change the external port here
       - "8621:8621" # This needs to match the P2P port above 
