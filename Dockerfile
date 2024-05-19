@@ -29,8 +29,7 @@ COPY acestream.conf /opt/acestream/acestream.conf
 # Prep dir serving m3u8 files.
 RUN mkdir /acelink
 
-EXPOSE ${PORT:-6878}
+EXPOSE 6878
 EXPOSE 8621
 
 ENTRYPOINT ["/opt/acestream/start-engine", "@/opt/acestream/acestream.conf"]
-HEALTHCHECK CMD wget -q -t1 -O- 'http://127.0.0.1:${PORT}/webui/api/service?method=get_version' | grep '"error": null'
