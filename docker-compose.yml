@@ -1,0 +1,16 @@
+services:  
+  acelink:
+    container_name: acelink
+    hostname: acelink
+    image: tr4il/acelink
+    restart: unless-stopped
+    command: # CLI arguments
+      - --http-port=6878  #Default; HTTP port; DON'T USE 6879 AS THAT IS RESERVED FOR INTERNAL HTTPS AND CAN'T BE CHANGED AFAIK.
+      - --port=8621 # Default; P2P Communication port
+    environment:
+      - TZ=$TZ
+      - PUID=1000
+      - PGID=1000
+    ports:
+      - "6878:6878" # You can change this to match above or leave above to default and just change the external port here
+      - "8621:8621" # This needs to match the P2P port above 

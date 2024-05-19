@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Ace Link</title>
+    <title>Acelink Webplayer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.17.1/video-js.min.css" integrity="sha512-d4c0djrxPfHtfWvKxxUpyL7jQxHfXf8ijfTcmbK9NZUYpl/Bclwj5SlWDpjxJfq1ah1JAqyFj8T00DmxiX+LJw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.17.1/video.min.js" integrity="sha512-1uwt7WCM9SM+AUswuXkIqIPZ4XMhKja83bo3GPjR/FyuXvsy87tp+/see3X8+dSDJZCKxbhGD8UoKvoCF37a5A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
@@ -25,7 +25,7 @@
 <script>
     document.title = `${document.title} [${"{player_id}".substr(0, 7)}]`;
     const player = videojs(document.querySelector('video'));
-    player.src(`http://127.0.0.1:6878/ace/manifest.m3u8?id={player_id}`);
+    player.src(`/ace/manifest.m3u8?id={player_id}`);
     player.play();
 </script>
 </body>

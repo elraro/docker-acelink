@@ -1,45 +1,28 @@
-# Ace Link
+# docker-acelink
 
-Ace Link is a menu bar app that allows playing Ace Streams on macOS. 
+Based on the original project by @blaise-io
 
-Play an Ace Stream or Magnet in any media player by pasting the URL in the Ace Link menu, or open an acestream or magnet link in Ace Link.
+Play an Acestream or Magnet in any media player by running Acestream in Docker, or using the web player.
 
-## [Download for macOS](https://github.com/blaise-io/acelink/releases/download/2.1.0/Ace.Link.2.1.0.dmg)
+Requires Docker
 
- - Install using HomeBrew: `brew install --cask ace-link`
- - [Download an older version](https://github.com/blaise-io/acelink/releases)
-
-Requires Docker and macOS High Sierra (10.13) or later.
-
-<img src="acelink.png" width="350" alt="Ace Link" />
 
 ### Media players
 
 Ace Link allows selecting your own media player. Ace Link does not transcode streams, so pick a player that supports popular audio and video codecs. VLC, IINA and MPV are free and open source media players that are able to play nearly anything. QuickTime and web browsers will play most streams, but not all. 
 
-### Signing
-
-Ace Link is an unsigned app because Apple does not allow p2p related applications. If your version of macOS does not allow opening unsigned applications, [follow these instructions to bypass this restriction](https://apple.stackexchange.com/a/240560).
-
 ### Ace Stream server only
 
-If you just want to run the AceStream engine, you can do so without Ace Link:
+Running the Acestream Engine:
 
 ```sh
-docker run --platform=linux/amd64 --rm -p 6878:6878 blaiseio/acelink
+docker run --platform=linux/amd64 --rm -p 6878:6878 ghcr.io/tr4il/acelink
 # now open http://<network ip>:6878/ace/getstream?id=<acestream id>
 # or http://<network ip>:6878/ace/getstream?infohash=<magnet uri> in a player
+# or access at http://127.0.0.1:6878/webui/player/<acestream id> in a webbrowser
 ```
 
 If you want to use a custom acestream.conf: 
 ```
-docker run --platform=linux/amd64 --rm -p 6878:6878 -v "$(pwd)/acestream.conf:/opt/acestream/acestream.conf" blaiseio/acelink
+docker run --platform=linux/amd64 --rm -p 6878:6878 -v "$(pwd)/acestream.conf:/opt/acestream/acestream.conf" ghcr.io/tr4il/acelink
 ```
-
-### View Ace Link logs
-
-1. Open Console.app
-2. In the Console.app search field, type `Process: Ace Link`
-3. Click on *Start* or *Start streaming*
-4. Launch Ace Link and perform an action you want to debug
-5. It should now start populating Console.app with debug information
